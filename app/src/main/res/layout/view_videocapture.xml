@@ -1,0 +1,68 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <!-- TODO: Update blank fragment layout -->
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        style="@style/font_low"
+        android:text="@string/record_video_tip" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:layout_marginTop="@dimen/low"
+        android:layout_gravity="center"
+        android:orientation="vertical">
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1">
+
+            <com.dingning.cardzs.weight.AutoFitSurfaceView
+                android:id="@+id/videocapture_preview_sv"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_alignParentBottom="true"
+                android:layout_alignParentTop="true" />
+
+            <TextView
+                android:id="@id/tv_record_tip"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                style="@style/font_time"/>
+        </FrameLayout>
+
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/low"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@id/bt_start_record"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                style="@style/button_padding_low"
+                android:background="@drawable/corner_blue"
+                android:text="@string/start_voice"/>
+
+            <Button
+                android:id="@id/bt_back"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/low"
+                style="@style/button_padding_low"
+                android:background="@drawable/corner_blue"
+                android:text="@string/back"/>
+
+        </LinearLayout>
+    </LinearLayout>
+
+</LinearLayout>

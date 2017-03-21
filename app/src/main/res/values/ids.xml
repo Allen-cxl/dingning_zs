@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <item name="iv_parent_avatar" type="id"/>
+    <item name="tv_message" type="id" />
+    <item name="tv_tip" type="id" />
+    <item name="iv_video" type="id" />
+    <item name="tv_video_count" type="id" />
+    <item name="iv_voice" type="id" />
+    <item name="tv_voice_count" type="id" />
+    <item name="iv_img" type="id" />
+    <item name="tv_img_count" type="id" />
+    <item name="bt_reply_voice" type="id" />
+    <item name="bt_reply_video" type="id" />
+    <item name="bt_back" type="id" />
+    <item name="bt_select_cancel" type="id" />
+    <item name="bt_record_voice" type="id" />
+    <item name="iv_avatar" type="id" />
+    <item name="tv_name" type="id" />
+    <item name="iv_select" type="id" />
+    <item name="tv_record_tip" type="id" />
+    <item name="bt_start_record" type="id" />
+    <item name="rv_message" type="id" />
+    <item name="tv_page" type="id" />
+    <item name="bt_send_video" type="id" />
+    <item name="bt_send_voice" type="id" />
+    <item name="bt_previous_page" type="id" />
+    <item name="bt_next_page" type="id" />
+    <item name="iv_logo" type="id" />
+    <item name="tv_class_name" type="id" />
+    <item name="tv_school_name" type="id" />
+    <item name="ts_new_message" type="id" />
+    <item name="tv_day" type="id" />
+    <item name="tv_data" type="id" />
+    <item name="tv_time" type="id" />
+    <item name="iv_play_status" type="id" />
+    <item name="play_time" type="id" />
+    <item name="sk" type="id" />
+    <item name="all_time" type="id" />
+    <item name="fragment" type="id" />
+    <item name="radio_main" type="id" />
+    <item name="radio_dingning" type="id" />
+    <item name="record_view" type="id" />
+    <item name="recyclerview" type="id" />
+    <item name="et_entry_class_id" type="id" />
+    <item name="et_entry_class_name" type="id" />
+    <item name="et_entry_admin_password" type="id" />
+    <item name="bt_ok" type="id" />
+    <item name="et_card" type="id" />
+    <item name="bt_try" type="id" />
+    <item name="bt_cancel" type="id" />
+    <item name="ll_bt" type="id" />
+    <item name="vcv" type="id" />
+    <item name="tv_version" type="id" />
+</resources>

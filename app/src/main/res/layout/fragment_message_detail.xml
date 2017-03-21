@@ -1,0 +1,124 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    style="@style/Layout_padding_difference"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="com.dingning.cardzs.MessageDetailFragment">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:id="@id/iv_parent_avatar"
+            android:layout_width="150dp"
+            android:layout_height="150dp"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@id/tv_message"
+                    style="@style/font_medium"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="@dimen/low"
+                    android:layout_weight="1"
+                    android:background="@drawable/corner_transparent"
+                    android:padding="@dimen/low_more"/>
+
+
+                <!-- TODO: Update blank fragment layout -->
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="20dp"
+                    android:orientation="vertical">
+
+                    <ImageView
+                        android:id="@id/iv_video"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/no_play_video" />
+
+                    <ImageView
+                        android:id="@id/iv_voice"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/low"
+                        android:src="@drawable/no_play_audi" />
+
+                    <FrameLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/low">\
+
+                        <ImageView
+                            android:id="@id/iv_img"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:src="@drawable/default_pic" />
+
+                        <com.dingning.cardzs.weight.MaterialBadgeTextView
+                            android:id="@id/tv_img_count"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="right"
+                            android:textColor="@android:color/white"
+                            app:mbtv_backgroundColor="#EF4738" />>
+
+                    </FrameLayout>
+                </LinearLayout>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/low"
+                android:gravity="right"
+                android:orientation="horizontal">
+
+                <Button
+                    android:id="@id/bt_reply_video"
+                    style="@style/button_padding_low"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/corner_pink"
+                    android:text="@string/reply_video" />
+
+                <Button
+                    android:id="@id/bt_reply_voice"
+                    style="@style/button_padding_low"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/low"
+                    android:background="@drawable/corner_green"
+                    android:text="@string/reply_voice" />
+
+                <Button
+                    android:id="@id/bt_back"
+                    style="@style/button_padding_low"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/low"
+                    android:background="@drawable/corner_blue"
+                    android:text="@string/back" />
+
+            </LinearLayout>
+
+        </LinearLayout>
+    </LinearLayout>
+
+
+</LinearLayout>

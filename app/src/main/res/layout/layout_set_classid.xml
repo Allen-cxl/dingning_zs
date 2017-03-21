@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="@dimen/font_low"
+        android:gravity="center"
+        android:text="@string/please_entry_class"/>
+    <EditText
+        android:id="@id/et_entry_class_name"
+        android:layout_marginTop="20dp"
+        android:layout_marginBottom="10dp"
+        android:layout_gravity="center"
+        android:layout_width="450dp"
+        android:layout_height="wrap_content"
+        android:textSize="@dimen/font_low"
+        android:gravity="center"
+        android:hint="@string/set_class_id"
+        />
+
+    <EditText
+        android:id="@id/et_entry_class_id"
+        android:layout_marginTop="20dp"
+        android:layout_marginBottom="10dp"
+        android:layout_gravity="center"
+        android:layout_width="450dp"
+        android:textSize="@dimen/font_low"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:hint="@string/set_class_name"
+        />
+
+    <EditText
+        android:id="@id/et_entry_admin_password"
+        android:layout_marginTop="20dp"
+        android:layout_marginBottom="10dp"
+        android:layout_gravity="center"
+        android:textSize="@dimen/font_low"
+        android:layout_width="450dp"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:hint="@string/set_admin_password"
+        />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="@dimen/low"
+        android:orientation="horizontal">
+    <Button
+        android:id="@id/bt_ok"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:textSize="@dimen/font_low"
+        android:layout_weight="1"
+        android:text="@string/ok"/>
+
+    <Button
+        android:id="@id/bt_cancel"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:textSize="@dimen/font_low"
+        android:layout_marginLeft="@dimen/low"
+        android:layout_weight="1"
+        android:text="@string/cancel"/>
+    </LinearLayout>
+</LinearLayout>

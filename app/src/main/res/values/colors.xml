@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#3F51B5</color>
+    <color name="colorPrimaryDark">#303F9F</color>
+    <color name="colorAccent">#FF4081</color>
+
+    <color name="white">#ffffff</color>
+    <color name="yellow">#f8e489</color>
+    <color name="yellow_dark">#fdd000</color>
+
+
+    <color name="videobackcolor">#FF333333</color>
+    <color name="green">#07AA63</color>
+    <color name="green_dark">#2EED7D</color>
+    <color name="blue">#007DD5</color>
+    <color name="blue_dark">#66C5FF</color>
+    <color name="pink">#EA547F</color>
+    <color name="pink_dark">#FFC1E4</color>
+    <!--#00000000-->
+    <color name="transparent">#40000000</color>
+
+
+
+    <color name="biz_audio_progress_bg">#6eb756</color>
+    <color name="biz_audio_progress_first">#ffffff</color>
+    <color name="biz_audio_progress_second">#6b6666</color>
+
+    <color name="RoundColor">#DAF6FE</color>
+    <color name="RoundFillColor">#45C3E5</color>
+    <color name="RoundHintTextColor">#666666</color>
+</resources>

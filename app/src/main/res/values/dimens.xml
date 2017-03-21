@@ -1,0 +1,14 @@
+<resources>
+    <!-- Default screen margins, per the Android Design guidelines. -->
+    <dimen name="low_more_5">5dp</dimen>
+    <dimen name="low_more">10dp</dimen>
+    <dimen name="low">20dp</dimen>
+    <dimen name="medium">40dp</dimen>
+    <dimen name="normal">60dp</dimen>
+    <dimen name="large">80dp</dimen>
+
+    <dimen name="font_low">20sp</dimen>
+    <dimen name="font_medium">30sp</dimen>
+    <dimen name="font_normal">40sp</dimen>
+    <dimen name="font_large">50sp</dimen>
+</resources>

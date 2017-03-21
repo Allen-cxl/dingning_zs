@@ -1,0 +1,59 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:record_view="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    style="@style/Layout_padding_same"
+    tools:context="com.dingning.cardzs.RecordingVoiceFragment">
+
+    <!-- TODO: Update blank fragment layout -->
+    <TextView
+        style="@style/font_low"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/record_voice_tip" />
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="@dimen/low"
+        android:gravity="center"
+        android:orientation="vertical">
+
+        <com.dingning.cardzs.weight.RecordView
+            android:id="@id/record_view"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            record_view:model="record_model" />
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/low"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@id/bt_start_record"
+                style="@style/button_padding_low"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/corner_blue"
+                android:text="@string/start_voice" />
+
+            <Button
+                android:id="@id/bt_back"
+                style="@style/button_padding_low"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/low"
+                android:background="@drawable/corner_blue"
+                android:text="@string/back" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</LinearLayout>

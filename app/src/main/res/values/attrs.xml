@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <declare-styleable name="MaterialBadgeTextView">
+        <attr name="mbtv_backgroundColor" format="color" />
+        <attr name="mbtv_border_width" format="dimension" />
+        <attr name="mbtv_border_color" format="color" />
+        <attr name="mbtv_border_alpha" format="float" />
+        <attr name="mbtv_type" format="enum">
+            <enum name="shadow_gradual" value="1"/>
+            <enum name="shadow_alpha" value="2"/>
+        </attr>
+    </declare-styleable>
+
+    <declare-styleable name="recordView">
+        <attr name="hintText" format="string"/>
+        <attr name="playHintText" format="string"/>
+        <attr name="timeTextColor" format="reference"/>
+        <attr name="hintTextSize" format="dimension"/>
+        <attr name="middleLineHeight" format="dimension"/>
+        <attr name="progressSrc" format="reference"/>
+        <attr name="middleLineColor" format="reference"/>
+        <attr name="unit" format="string"/>
+        <attr name="model">
+            <enum name="record_model" value="1"/>
+            <enum name="play_model" value="2"/>
+        </attr>
+    </declare-styleable>
+
+
+
+    <declare-styleable name="ProgressWheel">
+        <attr name="matProg_progressIndeterminate" format="boolean" />
+        <attr name="matProg_barColor" format="color" />
+        <attr name="matProg_rimColor" format="color" />
+        <attr name="matProg_rimWidth" format="dimension" />
+        <attr name="matProg_spinSpeed" format="float" />
+        <attr name="matProg_barSpinCycleTime" format="integer" />
+        <attr name="matProg_circleRadius" format="dimension" />
+        <attr name="matProg_fillRadius" format="boolean" />
+        <attr name="matProg_barWidth" format="dimension" />
+        <attr name="matProg_linearProgress" format="boolean" />
+    </declare-styleable>
+
+
+</resources>

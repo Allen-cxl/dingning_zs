@@ -1,0 +1,107 @@
+<resources>
+
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+
+        <item name="windowNoTitle">true</item>
+        <item name="windowActionBar">false</item>
+    </style>
+
+    <style name="Theme.AppCompat.Light.Dialog.Alert.Self"
+        parent="@style/Theme.AppCompat.Light.Dialog.Alert">
+        <item name="colorAccent">#6db856</item>
+    </style>
+
+    <style name="view_dialog" parent="android:style/Theme.Dialog">
+        <item name="android:windowFrame">@null</item>
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:windowBackground">@android:color/transparent</item>
+        <item name="android:windowIsFloating">true</item>
+        <item name="android:windowContentOverlay">@null</item>
+        <!-- 设置无遮罩层 -->
+    </style>
+
+    <style name="MediaButton">
+        <item name="android:background">@null</item>
+        <item name="android:layout_width">71dip</item>
+        <item name="android:layout_height">52dip</item>
+    </style>
+    <style name="MediaButton.Previous">
+        <item name="android:src">@android:drawable/ic_media_previous</item>
+    </style>
+
+    <style name="MediaButton.Next">
+        <item name="android:src">@android:drawable/ic_media_next</item>
+    </style>
+
+    <style name="MediaButton.Play">
+        <item name="android:src">@android:drawable/ic_media_play</item>
+    </style>
+
+    <style name="MediaButton.Ffwd">
+        <item name="android:src">@android:drawable/ic_media_ff</item>
+    </style>
+
+    <style name="MediaButton.Rew">
+        <item name="android:src">@android:drawable/ic_media_rew</item>
+    </style>
+
+    <style name="MediaButton.Pause">
+        <item name="android:src">@android:drawable/ic_media_pause</item>
+    </style>
+
+    <style name="Layout_padding_difference">
+        <item name="android:paddingBottom">80dp</item>
+        <item name="android:paddingLeft">40dp</item>
+        <item name="android:paddingRight">80dp</item>
+        <item name="android:paddingTop">40dp</item>
+    </style>
+
+    <style name="Layout_list_padding">
+        <item name="android:paddingBottom">160dp</item>
+        <item name="android:paddingLeft">40dp</item>
+        <item name="android:paddingRight">80dp</item>
+        <item name="android:paddingTop">40dp</item>
+    </style>
+
+    <style name="Layout_padding_same">
+        <item name="android:padding">40dp</item>
+    </style>
+
+    <style name="font_color">
+        <item name="android:textColor">@color/white</item>
+    </style>
+
+    <style name="font_low" parent="font_color">
+        <item name="android:textSize">@dimen/font_low</item>
+    </style>
+
+    <style name="font_medium" parent="font_color">
+        <item name="android:textSize">@dimen/font_medium</item>
+    </style>
+
+    <style name="font_normal" parent="font_color">
+        <item name="android:textSize">@dimen/font_normal</item>
+    </style>
+
+    <style name="font_large" parent="font_color">
+        <item name="android:textSize">@dimen/font_large</item>
+    </style>
+
+    <style name="button_padding_low" parent="font_low">
+        <item name="android:paddingLeft">15dp</item>
+        <item name="android:paddingRight">15dp</item>
+        <item name="android:paddingBottom">10dp</item>
+        <item name="android:paddingTop">10dp</item>
+    </style>
+
+    <style name="font_time">
+        <item name="android:textColor">@color/pink_dark</item>
+        <item name="android:textSize">@dimen/font_normal</item>
+    </style>
+
+</resources>
