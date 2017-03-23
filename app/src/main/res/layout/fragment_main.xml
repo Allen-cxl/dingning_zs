@@ -12,16 +12,6 @@ tools:context="com.dingning.cardzs.MainFragment">
     android:layout_gravity="center"
     android:text="@string/please_read_card" />
 
-<EditText
-    android:id="@id/et_card"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:layout_gravity="center"
-    android:background="@null"
-    android:maxLines="1"
-    android:textColor="@color/transparent"
-    android:textCursorDrawable="@null" />
-
 <LinearLayout
     android:layout_width="match_parent"
     android:layout_height="wrap_content"

@@ -2,18 +2,22 @@ package com.dingning.cardzs;
 
 import android.Manifest;
 import android.content.BroadcastReceiver;
+import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
+import android.content.ServiceConnection;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
+import android.os.IBinder;
 import android.os.Message;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AlertDialog;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -43,8 +47,10 @@ import com.dingning.cardzs.model.Version;
 import com.dingning.cardzs.utils.Convert;
 import com.dingning.cardzs.utils.DialogUtils;
 import com.dingning.cardzs.utils.GlideRoundTransform;
+import com.dingning.cardzs.utils.ScanService;
 import com.dingning.cardzs.utils.ScreenUtils;
 import com.dingning.cardzs.utils.SpUtils;
+import com.dingning.cardzs.utils.StringUtils;
 import com.dingning.cardzs.utils.SystemUtil;
 import com.dingning.cardzs.utils.TimeUtils;
 import com.dingning.cardzs.utils.TipUtils;
@@ -58,6 +64,7 @@ import com.yanzhenjie.permission.RationaleListener;
 import org.greenrobot.eventbus.EventBus;
 
 import java.io.File;
+import java.math.BigInteger;
 import java.util.List;
 import java.util.Set;
 import java.util.Timer;
@@ -103,6 +110,9 @@ public class MainActivity extends FragmentActivity implements MainFragment.OnUpd
     private Timer timer;
     private List<StudentNotice> studentNotices;
     private CustomApplication application;
+    private Intent mIntentService;
+
+
     private Handler handler = new Handler() {
         @Override
         public void handleMessage(Message msg) {
@@ -161,6 +171,12 @@ public class MainActivity extends FragmentActivity implements MainFragment.OnUpd
         versionCode = SystemUtil.getAppVersionCode(MainActivity.this);
         versionName = SystemUtil.getAppVersionName(MainActivity.this);
 
+        mIntentService = new Intent(this, ScanService.class);
+        Bundle bundle = new Bundle();
+        bundle.putString("type", "on");
+        mIntentService.putExtras(bundle);
+        startService(mIntentService);
+
         if (TextUtils.isEmpty(classID)) {
             showInfoDialog(DIALOG_SET);
         } else {
@@ -191,6 +207,7 @@ public class MainActivity extends FragmentActivity implements MainFragment.OnUpd
         timer.schedule(new TipUtils(studentNotices, listener), 0, 5000);
 
         registerReceiver(mTimeRefreshReceiver, intentFilter);
+
         init();
 
         AndPermission.with(this)
@@ -215,8 +232,6 @@ public class MainActivity extends FragmentActivity implements MainFragment.OnUpd
         }
     };
 
-
-
     public void setTime() {
         tvDay.setText(TimeUtils.getDayInWeek());
         tvData.setText(TimeUtils.getDate());
@@ -235,6 +250,7 @@ public class MainActivity extends FragmentActivity implements MainFragment.OnUpd
         try {
             application.setStudentNotices(null);
             unregisterReceiver(mTimeRefreshReceiver);
+            stopService(mIntentService);
         } catch (Exception e) {
             e.printStackTrace();
         }

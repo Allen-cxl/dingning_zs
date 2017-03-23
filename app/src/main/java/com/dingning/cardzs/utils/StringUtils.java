@@ -53,4 +53,24 @@ public class StringUtils {
         }
         return page;
     }
+
+    public static String changesPerialPortString(String portString){
+
+        if(portString != null && portString.length()==8){
+
+            String one = portString.substring(0,2);
+            String two = portString.substring(2,4);
+            String three = portString.substring(4,6);
+            String four = portString.substring(6,8);
+
+            StringBuilder sb = new StringBuilder();
+            sb.append(four);
+            sb.append(three);
+            sb.append(two);
+            sb.append(one);
+
+            return sb.toString();
+        }
+        return "";
+    }
 }

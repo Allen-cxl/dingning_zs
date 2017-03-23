@@ -1,10 +1,13 @@
 package com.dingning.cardzs;
 
+import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
+import android.content.IntentFilter;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -14,38 +17,67 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import com.dingning.cardzs.Callback.DialogCallback;
 import com.dingning.cardzs.Callback.JsonCallback;
 import com.dingning.cardzs.api.AppConstants;
 import com.dingning.cardzs.api.Parameter;
 import com.dingning.cardzs.model.BaseResponse;
+import com.dingning.cardzs.model.NoticeEvent;
 import com.dingning.cardzs.model.Student;
+import com.dingning.cardzs.model.StudentNotice;
+import com.dingning.cardzs.utils.Convert;
 import com.dingning.cardzs.utils.DialogUtils;
+import com.dingning.cardzs.utils.ScanService;
 import com.dingning.cardzs.utils.SpUtils;
+import com.dingning.cardzs.utils.StringUtils;
 import com.dingning.cardzs.utils.SystemUtil;
 import com.lzy.okgo.OkGo;
+
+import org.greenrobot.eventbus.EventBus;
+
+import java.math.BigInteger;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
+import cn.jpush.android.api.JPushInterface;
 import okhttp3.Call;
 import okhttp3.Response;
 
 
 public class MainFragment extends BaseFragment {
-    @BindView(R.id.et_card)
-    EditText etCard;
+
     @BindView(R.id.bt_back)
     Button btBack;
     @BindView(R.id.tv_version)
     TextView tvVersion;
 
     private Student student;
-    private String carId;
-    private boolean isLoading;
+    private boolean isLoading, isShow;
     private OnUpdateClassInfoListener mListener;
+    private final String poatReceiverAciton = "android.intent.action.hal.barcodescanner.scandata";
+
+    private BroadcastReceiver mTimeRefreshReceiver = new BroadcastReceiver() {
+        @Override
+        public void onReceive(Context context, Intent intent) {
+
+            if (poatReceiverAciton.equals(intent.getAction())) {
+                String scanData = intent.getStringExtra("scanData");
+                String string = StringUtils.changesPerialPortString(scanData);
+                BigInteger carId = new BigInteger(string, 16);
+                Log.i("serial_port_carId",carId.toString());
+                if (!TextUtils.isEmpty(carId.toString())&& isShow) {
+                    //处理事件
+                    getStudentInfo(carId.toString());
+                }
+            }
+        }
+
+
+    };
 
     public MainFragment() {
-        // Required empty public constructor
+
     }
 
     // TODO: Rename and change types and number of parameters
@@ -83,49 +115,31 @@ public class MainFragment extends BaseFragment {
 
     private void initValue() {
 
-        etCard.requestFocus();
-        etCard.setOnEditorActionListener(new TextView.OnEditorActionListener() {
+        IntentFilter intentFilter = new IntentFilter();
+        intentFilter.addAction("android.intent.action.hal.barcodescanner.scandata");
+        intentFilter.addCategory(getActivity().getPackageName());
+        getActivity().registerReceiver(mTimeRefreshReceiver, intentFilter);
 
-            @Override
-            public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
-                if (actionId == EditorInfo.IME_ACTION_SEND
-                        || actionId == EditorInfo.IME_ACTION_DONE
-                        || (event != null && KeyEvent.KEYCODE_ENTER == event.getKeyCode() && KeyEvent.ACTION_DOWN == event.getAction())) {
-
-                    if(!isLoading){
-                        carId = etCard.getText().toString().trim();
-
-                        if (!TextUtils.isEmpty(carId)) {
-                            //处理事件
-                            getStudentInfo();
-                        }
-                    }
-
-                }
-                return false;
-            }
-        });
-
-        tvVersion.setText(getString(R.string.app_name) +": "+ SystemUtil.getAppVersionName(getActivity()));
+        tvVersion.setText(getString(R.string.app_name) + ": " + SystemUtil.getAppVersionName(getActivity()));
     }
 
-    public void getStudentInfo() {
+    public void getStudentInfo(final String carID) {
         isLoading = true;
         OkGo.post(AppConstants.GET_STUDENTINFO_BY)    // 请求方式和请求url, get请求不需要拼接参数，支持get，post，put，delete，head，options请求
                 .tag(this)               // 请求的 tag, 主要用于取消对应的请求
-                .params(Parameter.CARD_ID, carId)
+                .params(Parameter.CARD_ID, carID)
                 //这里给出的泛型为 ServerModel，同时传递一个泛型的 class对象，即可自动将数据结果转成对象返回
-                .execute(new JsonCallback<BaseResponse<Student>>() {
+                .execute(new DialogCallback<BaseResponse<Student>>(getActivity()) {
 
                     @Override
                     public void onSuccess(BaseResponse<Student> baseResponse, Call call, Response response) {
-                        isLoading = false;
+
                         student = baseResponse.data;
                         String classID = student.getClass_id();
                         String className = student.getClass_name();
                         String classIDSp = SpUtils.getString(getActivity(), SpUtils.spClassID);
 
-                        if (carId == null || student == null) {
+                        if (carID == null || student == null) {
                             DialogUtils.showCarIDFailDialg(getActivity(), getString(R.string.no_carid));
                             return;
                         }
@@ -139,16 +153,15 @@ public class MainFragment extends BaseFragment {
                             SpUtils.putString(getActivity(), SpUtils.spClassName, className);
                             mListener.onUpdateClassName();
                         }
-                        application.setCarId(carId);
+                        application.setCarId(carID);
                         application.setStudent(student);
                         enterFragment(MessageListFragment.newInstance());
-                        etCard.setText(null);
+                        isLoading = false;
                     }
 
                     @Override
                     public void onError(Call call, Response response, Exception e) {
                         super.onError(call, response, e);
-                        etCard.setText(null);
                         DialogUtils.showCarIDFailDialg(getActivity(), "获取信息失败,请重试");
                         isLoading = false;
                     }
@@ -159,6 +172,12 @@ public class MainFragment extends BaseFragment {
     public void onDetach() {
         super.onDetach();
         mListener = null;
+    }
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        getActivity().unregisterReceiver(mTimeRefreshReceiver);
     }
 
     @OnClick({R.id.bt_back})
@@ -179,7 +198,13 @@ public class MainFragment extends BaseFragment {
     @Override
     public void onResume() {
         super.onResume();
-        etCard.requestFocus();
+        isShow =true;
+    }
+
+    @Override
+    public void onPause() {
+        super.onPause();
+        isShow =false;
     }
 
     public void openSolaApp() {
